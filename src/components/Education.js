@@ -39,6 +39,28 @@ class Education extends Component {
     });
   };
 
+  handleEdit = (id, e) => {
+    e.preventDefault();
+    const newArr = [...this.state.studies];
+    const index = newArr.findIndex((item) => item.id === id);
+    newArr[index] = {
+      ...newArr[index],
+      title: this.state.education.title,
+      date: this.state.education.date,
+      school: this.state.education.school,
+      id: this.state.education.id,
+    };
+    this.setState({
+      studies: newArr,
+      education: {
+        title: 'Title of Study',
+        date: 'Date of Study',
+        school: 'School Name',
+        id: uniqid(),
+      },
+    });
+  };
+
   handleTitleChange = (e) => {
     this.setState({
       education: {
@@ -77,14 +99,28 @@ class Education extends Component {
     if (!this.state.addStudy) {
       return (
         <div className="education">
-          <EducationList studies={studies} />
+          <h1>Education</h1>
+          <EducationList
+            studies={studies}
+            onTitleChange={this.handleTitleChange}
+            onDateChange={this.handleDateChange}
+            onSchoolChange={this.handleSchoolChange}
+            onEdit={this.handleEdit}
+          />
           <button onClick={this.addStudies}>Add</button>
         </div>
       );
     }
     return (
       <div className="education">
-        <EducationList studies={studies} />
+        <h1>Education</h1>
+        <EducationList
+          studies={studies}
+          onTitleChange={this.handleTitleChange}
+          onDateChange={this.handleDateChange}
+          onSchoolChange={this.handleSchoolChange}
+          onEdit={this.handleEdit}
+        />
         <form className="education" onSubmit={this.handleSave}>
           <input
             type="text"
