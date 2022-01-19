@@ -17,16 +17,31 @@ class Experience extends Component {
     };
   }
 
+  addExperiences = () => {
+    this.setState({
+      addExperience: true,
+    });
+  };
+
   render() {
     const { experience, experiences } = this.state;
     if (!this.state.addExperience) {
       return (
         <div>
           <ExperienceList />
-          <button>Add</button>
+          <button onClick={this.addExperiences}>Add</button>
         </div>
       );
     }
+    return (
+      <form className="experience">
+        <input type="text" value={experience.position}></input>
+        <input type="text" value={experience.date}></input>
+        <input type="text" value={experience.company}></input>
+        <input type="text" value={experience.description}></input>
+        <button>Save</button>
+      </form>
+    );
   }
 }
 
