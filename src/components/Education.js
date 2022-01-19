@@ -61,6 +61,12 @@ class Education extends Component {
     });
   };
 
+  handleDelete = (id) => {
+    this.setState({
+      studies: this.state.studies.filter((item) => item.id !== id),
+    });
+  };
+
   handleTitleChange = (e) => {
     this.setState({
       education: {
@@ -98,7 +104,7 @@ class Education extends Component {
     const { education, studies } = this.state;
     if (!this.state.addStudy) {
       return (
-        <div className="education">
+        <div>
           <h1>Education</h1>
           <EducationList
             studies={studies}
@@ -106,6 +112,7 @@ class Education extends Component {
             onDateChange={this.handleDateChange}
             onSchoolChange={this.handleSchoolChange}
             onEdit={this.handleEdit}
+            onDelete={this.handleDelete}
           />
           <button onClick={this.addStudies}>Add</button>
         </div>
@@ -120,6 +127,7 @@ class Education extends Component {
           onDateChange={this.handleDateChange}
           onSchoolChange={this.handleSchoolChange}
           onEdit={this.handleEdit}
+          onDelete={this.handleDelete}
         />
         <form className="education" onSubmit={this.handleSave}>
           <input

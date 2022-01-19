@@ -58,6 +58,9 @@ class EducationList extends Component {
           >
             Edit
           </button>
+          <button onClick={this.props.onDelete.bind(this, item.id)}>
+            Delete
+          </button>
         </div>
       );
     });
