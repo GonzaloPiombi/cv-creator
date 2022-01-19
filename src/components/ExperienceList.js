@@ -22,7 +22,7 @@ class ExperienceList extends Component {
         return (
           <form
             key={item.id}
-            className="experience"
+            className="column-section"
             onSubmit={this.props.onEdit.bind(this, item.id)}
           >
             <input
@@ -49,12 +49,12 @@ class ExperienceList extends Component {
               placeholder={item.description}
               onChange={this.props.onDescriptionChange}
             ></input>
-            <button>Save</button>
+            <button className="save-button">Save</button>
           </form>
         );
       }
       return (
-        <div key={item.id} className="experience">
+        <div key={item.id} className="ed-exp">
           <div>
             <h2>{item.position}</h2>
             <p>{item.date}</p>

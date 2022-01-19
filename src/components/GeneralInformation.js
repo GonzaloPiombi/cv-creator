@@ -5,10 +5,10 @@ import PersonalInformation from './PersonalInformation';
 class GeneralInformation extends Component {
   render() {
     return (
-      <div className="general-info">
+      <section className="general-info">
         <Names />
         <PersonalInformation />
-      </div>
+      </section>
     );
   }
 }

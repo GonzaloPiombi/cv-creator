@@ -122,8 +122,11 @@ class Experience extends Component {
     const { experience, experiences } = this.state;
     if (!this.state.addExperience) {
       return (
-        <div className="container">
-          <h1>Experience</h1>
+        <section className="container">
+          <div className="section-title">
+            <h1>Experience</h1>
+            <button onClick={this.addExperiences}>Add</button>
+          </div>
           <ExperienceList
             experiences={experiences}
             onPositionChange={this.handlePositionChange}
@@ -133,14 +136,13 @@ class Experience extends Component {
             onEdit={this.handleEdit}
             onDelete={this.handleDelete}
           />
-          <button onClick={this.addExperiences}>Add</button>
-        </div>
+        </section>
       );
     }
     return (
-      <div className="container">
+      <section className="container">
         <h1>Experience</h1>
-        <div className="list-container">
+        <div className="column-section">
           <ExperienceList
             experiences={experiences}
             onPositionChange={this.handlePositionChange}
@@ -150,7 +152,7 @@ class Experience extends Component {
             onEdit={this.handleEdit}
             onDelete={this.handleDelete}
           />
-          <form className="list-container" onSubmit={this.handleSave}>
+          <form className="column-section" onSubmit={this.handleSave}>
             <input
               type="text"
               onChange={this.handlePositionChange}
@@ -171,10 +173,10 @@ class Experience extends Component {
               onChange={this.handleDescriptionChange}
               value={experience.description}
             ></input>
-            <button>Save</button>
+            <button className="save-button">Save</button>
           </form>
         </div>
-      </div>
+      </section>
     );
   }
 }

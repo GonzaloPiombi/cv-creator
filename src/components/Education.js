@@ -103,8 +103,11 @@ class Education extends Component {
     const { education, studies } = this.state;
     if (!this.state.addStudy) {
       return (
-        <div className="container">
-          <h1>Education</h1>
+        <section className="container">
+          <div className="section-title">
+            <h1>Education</h1>
+            <button onClick={this.addStudies}>Add</button>
+          </div>
           <EducationList
             studies={studies}
             onTitleChange={this.handleTitleChange}
@@ -113,14 +116,13 @@ class Education extends Component {
             onEdit={this.handleEdit}
             onDelete={this.handleDelete}
           />
-          <button onClick={this.addStudies}>Add</button>
-        </div>
+        </section>
       );
     }
     return (
-      <div className="container">
+      <section className="container">
         <h1>Education</h1>
-        <div className="list-container">
+        <div className="column-section">
           <EducationList
             studies={studies}
             onTitleChange={this.handleTitleChange}
@@ -129,7 +131,7 @@ class Education extends Component {
             onEdit={this.handleEdit}
             onDelete={this.handleDelete}
           />
-          <form className="list-container" onSubmit={this.handleSave}>
+          <form className="column-section" onSubmit={this.handleSave}>
             <input
               type="text"
               onChange={this.handleTitleChange}
@@ -145,10 +147,10 @@ class Education extends Component {
               onChange={this.handleSchoolChange}
               value={education.school}
             ></input>
-            <button>Save</button>
+            <button className="save-button">Save</button>
           </form>
         </div>
-      </div>
+      </section>
     );
   }
 }

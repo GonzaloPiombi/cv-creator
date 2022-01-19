@@ -46,7 +46,7 @@ class PersonalInformation extends Component {
   render() {
     if (this.state.editState) {
       return (
-        <form className="personal-info" onSubmit={this.handleSave}>
+        <form className="column-section" onSubmit={this.handleSave}>
           <input
             type="text"
             value={this.state.email}
@@ -62,19 +62,19 @@ class PersonalInformation extends Component {
             value={this.state.linkedIn}
             onChange={this.handleLinkedInChange}
           ></input>
-          <button>Save</button>
+          <button className="save-button">Save</button>
         </form>
       );
     }
     return (
-      <div className="personal-info">
+      <section className="column-section">
         <h4>{this.state.email}</h4>
         <h4>{this.state.phone}</h4>
         <h4>{this.state.linkedIn}</h4>
         <button className="edit-button" onClick={this.handleEdit}>
           Edit
         </button>
-      </div>
+      </section>
     );
   }
 }

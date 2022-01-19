@@ -39,7 +39,7 @@ class Names extends Component {
   render() {
     if (this.state.editState) {
       return (
-        <form className="names" onSubmit={this.handleSave}>
+        <form className="column-section" onSubmit={this.handleSave}>
           <input
             type="text"
             onChange={this.handleFirtsNameChange}
@@ -50,18 +50,18 @@ class Names extends Component {
             onChange={this.handleLastNameChange}
             value={this.state.lastName}
           ></input>
-          <button>Save</button>
+          <button className="save-button">Save</button>
         </form>
       );
     }
     return (
-      <div className="names">
+      <section className="column-section">
         <h1>{this.state.firstName}</h1>
         <h1>{this.state.lastName}</h1>
         <button className="edit-button" onClick={this.handleEdit}>
           Edit
         </button>
-      </div>
+      </section>
     );
   }
 }
