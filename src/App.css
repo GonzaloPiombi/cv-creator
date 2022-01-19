@@ -10,27 +10,69 @@ h4 {
 }
 
 .App {
-  background-color: blue;
+  background-color: #fff;
+  border: solid 3px #000;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  margin: auto;
+  margin: 3% auto auto;
   min-height: 80vh;
   padding: 2%;
   width: 55vw;
 }
 
+.App > div {
+  margin-bottom: 4%;
+}
+
+button {
+  display: none;
+}
+
+.save-button {
+  display: block;
+}
+
 .general-info {
+  border-bottom: solid 2px #000;
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
 }
 
-.names {
+.column-section {
   display: flex;
   flex-direction: column;
 }
 
-.personal-info {
+.column-section:hover button {
+  display: block;
+}
+
+.ed-exp {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.container h1 {
+  margin-bottom: 2%;
+}
+
+.ed-exp button {
+  width: fit-content;
+}
+
+.ed-exp:hover button {
+  display: block;
+}
+
+.section-title {
+  border-bottom: solid 1px #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.section-title:hover button {
+  display: block;
 }
