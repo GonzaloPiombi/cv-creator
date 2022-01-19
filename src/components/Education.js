@@ -1,4 +1,3 @@
-/* eslint-disable no-useless-constructor */
 import { Component } from 'react';
 import EducationList from './EducationList';
 import uniqid from 'uniqid';
