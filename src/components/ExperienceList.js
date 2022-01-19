@@ -55,19 +55,23 @@ class ExperienceList extends Component {
       }
       return (
         <div key={item.id} className="experience">
-          <h2>{item.position}</h2>
-          <p>{item.date}</p>
-          <h3>{item.company}</h3>
-          <p>{item.description}</p>
-          <button
-            className="edit-button"
-            onClick={this.handleEdit.bind(this, item.id)}
-          >
-            Edit
-          </button>
-          <button onClick={this.props.onDelete.bind(this, item.id)}>
-            Delete
-          </button>
+          <div>
+            <h2>{item.position}</h2>
+            <p>{item.date}</p>
+            <h3>{item.company}</h3>
+            <p>{item.description}</p>
+          </div>
+          <div>
+            <button
+              className="edit-button"
+              onClick={this.handleEdit.bind(this, item.id)}
+            >
+              Edit
+            </button>
+            <button onClick={this.props.onDelete.bind(this, item.id)}>
+              Delete
+            </button>
+          </div>
         </div>
       );
     });

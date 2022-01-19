@@ -103,7 +103,7 @@ class Education extends Component {
     const { education, studies } = this.state;
     if (!this.state.addStudy) {
       return (
-        <div>
+        <div className="container">
           <h1>Education</h1>
           <EducationList
             studies={studies}
@@ -118,34 +118,36 @@ class Education extends Component {
       );
     }
     return (
-      <div className="education">
+      <div className="container">
         <h1>Education</h1>
-        <EducationList
-          studies={studies}
-          onTitleChange={this.handleTitleChange}
-          onDateChange={this.handleDateChange}
-          onSchoolChange={this.handleSchoolChange}
-          onEdit={this.handleEdit}
-          onDelete={this.handleDelete}
-        />
-        <form className="education" onSubmit={this.handleSave}>
-          <input
-            type="text"
-            onChange={this.handleTitleChange}
-            value={education.title}
-          ></input>
-          <input
-            type="text"
-            onChange={this.handleDateChange}
-            value={education.date}
-          ></input>
-          <input
-            type="text"
-            onChange={this.handleSchoolChange}
-            value={education.school}
-          ></input>
-          <button>Save</button>
-        </form>
+        <div className="list-container">
+          <EducationList
+            studies={studies}
+            onTitleChange={this.handleTitleChange}
+            onDateChange={this.handleDateChange}
+            onSchoolChange={this.handleSchoolChange}
+            onEdit={this.handleEdit}
+            onDelete={this.handleDelete}
+          />
+          <form className="list-container" onSubmit={this.handleSave}>
+            <input
+              type="text"
+              onChange={this.handleTitleChange}
+              value={education.title}
+            ></input>
+            <input
+              type="text"
+              onChange={this.handleDateChange}
+              value={education.date}
+            ></input>
+            <input
+              type="text"
+              onChange={this.handleSchoolChange}
+              value={education.school}
+            ></input>
+            <button>Save</button>
+          </form>
+        </div>
       </div>
     );
   }

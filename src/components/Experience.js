@@ -122,7 +122,7 @@ class Experience extends Component {
     const { experience, experiences } = this.state;
     if (!this.state.addExperience) {
       return (
-        <div>
+        <div className="container">
           <h1>Experience</h1>
           <ExperienceList
             experiences={experiences}
@@ -138,40 +138,42 @@ class Experience extends Component {
       );
     }
     return (
-      <div className="experience">
+      <div className="container">
         <h1>Experience</h1>
-        <ExperienceList
-          experiences={experiences}
-          onPositionChange={this.handlePositionChange}
-          onDateChange={this.handleDateChange}
-          onCompanyChange={this.handleCompanyChange}
-          onDescriptionChange={this.handleDescriptionChange}
-          onEdit={this.handleEdit}
-          onDelete={this.handleDelete}
-        />
-        <form className="experience" onSubmit={this.handleSave}>
-          <input
-            type="text"
-            onChange={this.handlePositionChange}
-            value={experience.position}
-          ></input>
-          <input
-            type="text"
-            onChange={this.handleDateChange}
-            value={experience.date}
-          ></input>
-          <input
-            type="text"
-            onChange={this.handleCompanyChange}
-            value={experience.company}
-          ></input>
-          <input
-            type="text"
-            onChange={this.handleDescriptionChange}
-            value={experience.description}
-          ></input>
-          <button>Save</button>
-        </form>
+        <div className="list-container">
+          <ExperienceList
+            experiences={experiences}
+            onPositionChange={this.handlePositionChange}
+            onDateChange={this.handleDateChange}
+            onCompanyChange={this.handleCompanyChange}
+            onDescriptionChange={this.handleDescriptionChange}
+            onEdit={this.handleEdit}
+            onDelete={this.handleDelete}
+          />
+          <form className="list-container" onSubmit={this.handleSave}>
+            <input
+              type="text"
+              onChange={this.handlePositionChange}
+              value={experience.position}
+            ></input>
+            <input
+              type="text"
+              onChange={this.handleDateChange}
+              value={experience.date}
+            ></input>
+            <input
+              type="text"
+              onChange={this.handleCompanyChange}
+              value={experience.company}
+            ></input>
+            <input
+              type="text"
+              onChange={this.handleDescriptionChange}
+              value={experience.description}
+            ></input>
+            <button>Save</button>
+          </form>
+        </div>
       </div>
     );
   }

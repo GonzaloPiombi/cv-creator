@@ -49,18 +49,22 @@ class EducationList extends Component {
       }
       return (
         <div key={item.id} className="education">
-          <h2>{item.title}</h2>
-          <p>{item.date}</p>
-          <h3>{item.school}</h3>
-          <button
-            className="edit-button"
-            onClick={this.handleEdit.bind(this, item.id)}
-          >
-            Edit
-          </button>
-          <button onClick={this.props.onDelete.bind(this, item.id)}>
-            Delete
-          </button>
+          <div>
+            <h2>{item.title}</h2>
+            <p>{item.date}</p>
+            <h3>{item.school}</h3>
+          </div>
+          <div>
+            <button
+              className="edit-button"
+              onClick={this.handleEdit.bind(this, item.id)}
+            >
+              Edit
+            </button>
+            <button onClick={this.props.onDelete.bind(this, item.id)}>
+              Delete
+            </button>
+          </div>
         </div>
       );
     });
