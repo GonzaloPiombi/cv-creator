@@ -20,11 +20,7 @@ class ExperienceList extends Component {
     return experiences.map((item) => {
       if (item.id === this.state.id) {
         return (
-          <form
-            key={item.id}
-            className="column-section"
-            onSubmit={this.props.onEdit.bind(this, item.id)}
-          >
+          <form key={item.id} className="column-section">
             <input
               type="text"
               defaultValue={item.position}
@@ -49,7 +45,12 @@ class ExperienceList extends Component {
               placeholder={item.description}
               onChange={(e) => this.props.onDescriptionChange(e, item)}
             ></input>
-            <button className="save-button">Save</button>
+            <span
+              className="material-icons-outlined"
+              onClick={this.props.onEdit.bind(this, item.id)}
+            >
+              save
+            </span>
           </form>
         );
       }
@@ -62,15 +63,18 @@ class ExperienceList extends Component {
             <p>{item.description}</p>
           </div>
           <div>
-            <button
-              className="edit-button"
+            <span
+              className="material-icons-outlined"
               onClick={this.handleEdit.bind(this, item.id)}
             >
-              Edit
-            </button>
-            <button onClick={this.props.onDelete.bind(this, item.id)}>
-              Delete
-            </button>
+              edit
+            </span>
+            <span
+              className="material-icons-outlined"
+              onClick={this.props.onDelete.bind(this, item.id)}
+            >
+              delete
+            </span>
           </div>
         </div>
       );

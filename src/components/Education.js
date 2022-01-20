@@ -128,7 +128,9 @@ class Education extends Component {
         <section className="container">
           <div className="section-title">
             <h1>Education</h1>
-            <button onClick={this.addStudies}>Add</button>
+            <span className="material-icons-outlined" onClick={this.addStudies}>
+              add_circle_outline
+            </span>
           </div>
           <EducationList
             studies={studies}
@@ -153,7 +155,7 @@ class Education extends Component {
             onEdit={this.handleEdit}
             onDelete={this.handleDelete}
           />
-          <form className="column-section" onSubmit={this.handleSave}>
+          <form className="column-section">
             <input
               type="text"
               onChange={this.handleTitleChange}
@@ -169,7 +171,9 @@ class Education extends Component {
               onChange={this.handleSchoolChange}
               value={education.school}
             ></input>
-            <button className="save-button">Save</button>
+            <span className="material-icons-outlined" onClick={this.handleSave}>
+              save
+            </span>
           </form>
         </div>
       </section>

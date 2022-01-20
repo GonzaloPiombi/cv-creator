@@ -55,12 +55,16 @@ class Names extends Component {
       );
     }
     return (
-      <section className="column-section">
-        <h1>{this.state.firstName}</h1>
-        <h1>{this.state.lastName}</h1>
-        <button className="edit-button" onClick={this.handleEdit}>
-          Edit
-        </button>
+      <section className="row-section">
+        <div>
+          <h1>{this.state.firstName}</h1>
+          <h1>{this.state.lastName}</h1>
+        </div>
+        <div>
+          <span className="material-icons-outlined" onClick={this.handleEdit}>
+            edit
+          </span>
+        </div>
       </section>
     );
   }

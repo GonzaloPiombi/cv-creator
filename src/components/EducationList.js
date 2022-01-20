@@ -20,11 +20,7 @@ class EducationList extends Component {
     return studies.map((item) => {
       if (item.id === this.state.editId) {
         return (
-          <form
-            key={item.id}
-            className="column-section"
-            onSubmit={this.props.onEdit.bind(this, item.id)}
-          >
+          <form key={item.id} className="column-section">
             <input
               type="text"
               defaultValue={item.title}
@@ -43,7 +39,12 @@ class EducationList extends Component {
               placeholder={item.school}
               onChange={(e) => this.props.onSchoolChange(e, item)}
             ></input>
-            <button className="save-button">Save</button>
+            <span
+              className="material-icons-outlined"
+              onClick={this.props.onEdit.bind(this, item.id)}
+            >
+              save
+            </span>
           </form>
         );
       }
@@ -55,15 +56,18 @@ class EducationList extends Component {
             <h3>{item.school}</h3>
           </div>
           <div>
-            <button
-              className="edit-button"
+            <span
+              className="material-icons-outlined"
               onClick={this.handleEdit.bind(this, item.id)}
             >
-              Edit
-            </button>
-            <button onClick={this.props.onDelete.bind(this, item.id)}>
-              Delete
-            </button>
+              edit
+            </span>
+            <span
+              className="material-icons-outlined"
+              onClick={this.props.onDelete.bind(this, item.id)}
+            >
+              delete
+            </span>
           </div>
         </div>
       );

@@ -67,13 +67,17 @@ class PersonalInformation extends Component {
       );
     }
     return (
-      <section className="column-section">
-        <h4>{this.state.email}</h4>
-        <h4>{this.state.phone}</h4>
-        <h4>{this.state.linkedIn}</h4>
-        <button className="edit-button" onClick={this.handleEdit}>
-          Edit
-        </button>
+      <section className="row-section">
+        <div>
+          <span className="material-icons-outlined" onClick={this.handleEdit}>
+            edit
+          </span>
+        </div>
+        <div>
+          <h4>{this.state.email}</h4>
+          <h4>{this.state.phone}</h4>
+          <h4>{this.state.linkedIn}</h4>
+        </div>
       </section>
     );
   }

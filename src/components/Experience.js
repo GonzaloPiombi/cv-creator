@@ -152,7 +152,12 @@ class Experience extends Component {
         <section className="container">
           <div className="section-title">
             <h1>Experience</h1>
-            <button onClick={this.addExperiences}>Add</button>
+            <span
+              className="material-icons-outlined"
+              onClick={this.addExperiences}
+            >
+              add_circle_outline
+            </span>
           </div>
           <ExperienceList
             experiences={experiences}
@@ -179,7 +184,7 @@ class Experience extends Component {
             onEdit={this.handleEdit}
             onDelete={this.handleDelete}
           />
-          <form className="column-section" onSubmit={this.handleSave}>
+          <form className="column-section">
             <input
               type="text"
               onChange={this.handlePositionChange}
@@ -200,7 +205,9 @@ class Experience extends Component {
               onChange={this.handleDescriptionChange}
               defaultValue={experience.description}
             ></input>
-            <button className="save-button">Save</button>
+            <span className="material-icons-outlined" onClick={this.handleSave}>
+              save
+            </span>
           </form>
         </div>
       </section>
