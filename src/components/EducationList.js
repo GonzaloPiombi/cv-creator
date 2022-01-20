@@ -29,19 +29,19 @@ class EducationList extends Component {
               type="text"
               defaultValue={item.title}
               placeholder={item.title}
-              onChange={this.props.onTitleChange}
+              onChange={(e) => this.props.onTitleChange(e, item)}
             ></input>
             <input
               type="text"
               defaultValue={item.date}
               placeholder={item.date}
-              onChange={this.props.onDateChange}
+              onChange={(e) => this.props.onDateChange(e, item)}
             ></input>
             <input
               type="text"
               defaultValue={item.school}
               placeholder={item.school}
-              onChange={this.props.onSchoolChange}
+              onChange={(e) => this.props.onSchoolChange(e, item)}
             ></input>
             <button className="save-button">Save</button>
           </form>
@@ -51,7 +51,7 @@ class EducationList extends Component {
         <div key={item.id} className="ed-exp">
           <div>
             <h2>{item.title}</h2>
-            <p>{item.date}</p>
+            <p className="date">{item.date}</p>
             <h3>{item.school}</h3>
           </div>
           <div>

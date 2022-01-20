@@ -15,6 +15,7 @@ class Education extends Component {
         id: uniqid(),
       },
       studies: [],
+      areFieldsBeingEdited: false,
     };
   }
 
@@ -35,6 +36,7 @@ class Education extends Component {
         id: uniqid(),
       },
       addStudy: false,
+      areFieldsBeingEdited: false,
     });
   };
 
@@ -42,13 +44,17 @@ class Education extends Component {
     e.preventDefault();
     const newArr = [...this.state.studies];
     const index = newArr.findIndex((item) => item.id === id);
-    newArr[index] = {
-      ...newArr[index],
-      title: this.state.education.title,
-      date: this.state.education.date,
-      school: this.state.education.school,
-      id: this.state.education.id,
-    };
+    if (this.state.areFieldsBeingEdited) {
+      newArr[index] = {
+        ...newArr[index],
+        title: this.state.education.title,
+        date: this.state.education.date,
+        school: this.state.education.school,
+        id: this.state.education.id,
+      };
+    } else {
+      newArr[index] = { ...newArr[index], id: uniqid() };
+    }
     this.setState({
       studies: newArr,
       education: {
@@ -57,6 +63,7 @@ class Education extends Component {
         school: 'School Name',
         id: uniqid(),
       },
+      areFieldsBeingEdited: false,
     });
   };
 
@@ -66,36 +73,51 @@ class Education extends Component {
     });
   };
 
-  handleTitleChange = (e) => {
+  handleTitleChange = (e, item) => {
+    let newItem;
+    if (item && !this.state.areFieldsBeingEdited) {
+      newItem = { ...item, title: e.target.value, id: uniqid() };
+    }
     this.setState({
-      education: {
+      education: newItem || {
         title: e.target.value,
         date: this.state.education.date,
         school: this.state.education.school,
         id: this.state.education.id,
       },
+      areFieldsBeingEdited: true,
     });
   };
 
-  handleDateChange = (e) => {
+  handleDateChange = (e, item) => {
+    let newItem;
+    if (item && !this.state.areFieldsBeingEdited) {
+      newItem = { ...item, date: e.target.value, id: uniqid() };
+    }
     this.setState({
-      education: {
+      education: newItem || {
         title: this.state.education.title,
         date: e.target.value,
         school: this.state.education.school,
         id: this.state.education.id,
       },
+      areFieldsBeingEdited: true,
     });
   };
 
-  handleSchoolChange = (e) => {
+  handleSchoolChange = (e, item) => {
+    let newItem;
+    if (item && !this.state.areFieldsBeingEdited) {
+      newItem = { ...item, school: e.target.value, id: uniqid() };
+    }
     this.setState({
-      education: {
+      education: newItem || {
         title: this.state.education.title,
         date: this.state.education.date,
         school: e.target.value,
         id: this.state.education.id,
       },
+      areFieldsBeingEdited: true,
     });
   };
 
