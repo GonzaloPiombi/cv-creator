@@ -29,25 +29,25 @@ class ExperienceList extends Component {
               type="text"
               defaultValue={item.position}
               placeholder={item.position}
-              onChange={this.props.onPositionChange}
+              onChange={(e) => this.props.onPositionChange(e, item)}
             ></input>
             <input
               type="text"
               defaultValue={item.date}
               placeholder={item.date}
-              onChange={this.props.onDateChange}
+              onChange={(e) => this.props.onDateChange(e, item)}
             ></input>
             <input
               type="text"
               defaultValue={item.company}
               placeholder={item.company}
-              onChange={this.props.onCompanyChange}
+              onChange={(e) => this.props.onCompanyChange(e, item)}
             ></input>
             <input
               type="text"
               defaultValue={item.description}
               placeholder={item.description}
-              onChange={this.props.onDescriptionChange}
+              onChange={(e) => this.props.onDescriptionChange(e, item)}
             ></input>
             <button className="save-button">Save</button>
           </form>
@@ -57,7 +57,7 @@ class ExperienceList extends Component {
         <div key={item.id} className="ed-exp">
           <div>
             <h2>{item.position}</h2>
-            <p>{item.date}</p>
+            <p className="date">{item.date}</p>
             <h3>{item.company}</h3>
             <p>{item.description}</p>
           </div>

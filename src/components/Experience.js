@@ -16,6 +16,7 @@ class Experience extends Component {
         id: uniqid(),
       },
       experiences: [],
+      areFieldsBeingEdited: false,
     };
   }
 
@@ -37,6 +38,7 @@ class Experience extends Component {
         id: uniqid(),
       },
       addExperience: false,
+      areFieldsBeingEdited: false,
     });
   };
 
@@ -44,14 +46,18 @@ class Experience extends Component {
     e.preventDefault();
     const newArr = [...this.state.experiences];
     const index = newArr.findIndex((item) => item.id === id);
-    newArr[index] = {
-      ...newArr[index],
-      position: this.state.experience.position,
-      date: this.state.experience.date,
-      company: this.state.experience.company,
-      description: this.state.experience.description,
-      id: uniqid(),
-    };
+    if (this.state.areFieldsBeingEdited) {
+      newArr[index] = {
+        ...newArr[index],
+        position: this.state.experience.position,
+        date: this.state.experience.date,
+        company: this.state.experience.company,
+        description: this.state.experience.description,
+        id: uniqid(),
+      };
+    } else {
+      newArr[index] = { ...newArr[index], id: uniqid() };
+    }
     this.setState({
       experiences: newArr,
       experience: {
@@ -61,6 +67,7 @@ class Experience extends Component {
         description: 'Description',
         id: uniqid(),
       },
+      areFieldsBeingEdited: false,
     });
   };
 
@@ -70,51 +77,71 @@ class Experience extends Component {
     });
   };
 
-  handlePositionChange = (e) => {
+  handlePositionChange = (e, item) => {
+    let newItem;
+    if (item && !this.state.areFieldsBeingEdited) {
+      newItem = { ...item, position: e.target.value, id: uniqid() };
+    }
     this.setState({
-      experience: {
+      experience: newItem || {
         position: e.target.value,
         date: this.state.experience.date,
         company: this.state.experience.company,
         description: this.state.experience.description,
         id: this.state.experience.id,
       },
+      areFieldsBeingEdited: true,
     });
   };
 
-  handleDateChange = (e) => {
+  handleDateChange = (e, item) => {
+    let newItem;
+    if (item && !this.state.areFieldsBeingEdited) {
+      newItem = { ...item, date: e.target.value, id: uniqid() };
+    }
     this.setState({
-      experience: {
+      experience: newItem || {
         position: this.state.experience.position,
         date: e.target.value,
         company: this.state.experience.company,
         description: this.state.experience.description,
         id: this.state.experience.id,
       },
+      areFieldsBeingEdited: true,
     });
   };
 
-  handleCompanyChange = (e) => {
+  handleCompanyChange = (e, item) => {
+    let newItem;
+    if (item && !this.state.areFieldsBeingEdited) {
+      newItem = { ...item, company: e.target.value, id: uniqid() };
+    }
     this.setState({
-      experience: {
+      experience: newItem || {
         position: this.state.experience.position,
         date: this.state.experience.date,
         company: e.target.value,
         description: this.state.experience.description,
         id: this.state.experience.id,
       },
+      areFieldsBeingEdited: true,
     });
   };
 
-  handleDescriptionChange = (e) => {
+  handleDescriptionChange = (e, item) => {
+    let newItem;
+    if (item && !this.state.areFieldsBeingEdited) {
+      newItem = { ...item, description: e.target.value, id: uniqid() };
+    }
     this.setState({
-      experience: {
+      experience: newItem || {
         position: this.state.experience.position,
         date: this.state.experience.date,
         company: this.state.experience.company,
         description: e.target.value,
         id: this.state.experience.id,
       },
+      areFieldsBeingEdited: true,
     });
   };
 
@@ -156,22 +183,22 @@ class Experience extends Component {
             <input
               type="text"
               onChange={this.handlePositionChange}
-              value={experience.position}
+              defaultValue={experience.position}
             ></input>
             <input
               type="text"
               onChange={this.handleDateChange}
-              value={experience.date}
+              defaultValue={experience.date}
             ></input>
             <input
               type="text"
               onChange={this.handleCompanyChange}
-              value={experience.company}
+              defaultValue={experience.company}
             ></input>
             <input
               type="text"
               onChange={this.handleDescriptionChange}
-              value={experience.description}
+              defaultValue={experience.description}
             ></input>
             <button className="save-button">Save</button>
           </form>
