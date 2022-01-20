@@ -39,24 +39,26 @@ class Names extends Component {
   render() {
     if (this.state.editState) {
       return (
-        <form className="column-section">
-          <input
-            type="text"
-            onChange={this.handleFirtsNameChange}
-            value={this.state.firstName}
-          ></input>
-          <input
-            type="text"
-            onChange={this.handleLastNameChange}
-            value={this.state.lastName}
-          ></input>
+        <div className="row-section">
+          <form className="column-section">
+            <input
+              type="text"
+              onChange={this.handleFirtsNameChange}
+              value={this.state.firstName}
+            ></input>
+            <input
+              type="text"
+              onChange={this.handleLastNameChange}
+              value={this.state.lastName}
+            ></input>
+          </form>
           <span
             className={['save-button', 'material-icons-outlined'].join(' ')}
             onClick={this.handleSave}
           >
             save
           </span>
-        </form>
+        </div>
       );
     }
     return (

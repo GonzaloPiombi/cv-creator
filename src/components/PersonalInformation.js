@@ -46,29 +46,31 @@ class PersonalInformation extends Component {
   render() {
     if (this.state.editState) {
       return (
-        <form className="column-section">
-          <input
-            type="text"
-            value={this.state.email}
-            onChange={this.handleEmailChange}
-          ></input>
-          <input
-            type="text"
-            value={this.state.phone}
-            onChange={this.handlePhoneChange}
-          ></input>
-          <input
-            type="text"
-            value={this.state.linkedIn}
-            onChange={this.handleLinkedInChange}
-          ></input>
+        <div className="row-section">
           <span
             className={['save-button', 'material-icons-outlined'].join(' ')}
             onClick={this.handleSave}
           >
             save
           </span>
-        </form>
+          <form className="column-section">
+            <input
+              type="text"
+              value={this.state.email}
+              onChange={this.handleEmailChange}
+            ></input>
+            <input
+              type="text"
+              value={this.state.phone}
+              onChange={this.handlePhoneChange}
+            ></input>
+            <input
+              type="text"
+              value={this.state.linkedIn}
+              onChange={this.handleLinkedInChange}
+            ></input>
+          </form>
+        </div>
       );
     }
     return (
