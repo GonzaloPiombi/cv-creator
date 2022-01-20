@@ -62,7 +62,10 @@ class PersonalInformation extends Component {
             value={this.state.linkedIn}
             onChange={this.handleLinkedInChange}
           ></input>
-          <span className="material-icons-outlined" onClick={this.handleSave}>
+          <span
+            className={['save-button', 'material-icons-outlined'].join(' ')}
+            onClick={this.handleSave}
+          >
             save
           </span>
         </form>
@@ -71,7 +74,10 @@ class PersonalInformation extends Component {
     return (
       <section className="row-section">
         <div>
-          <span className="material-icons-outlined" onClick={this.handleEdit}>
+          <span
+            className={['edit-button', 'material-icons-outlined'].join(' ')}
+            onClick={this.handleEdit}
+          >
             edit
           </span>
         </div>

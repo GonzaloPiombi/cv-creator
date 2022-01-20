@@ -40,7 +40,7 @@ class EducationList extends Component {
               onChange={(e) => this.props.onSchoolChange(e, item)}
             ></input>
             <span
-              className="material-icons-outlined"
+              className={['save-button', 'material-icons-outlined'].join(' ')}
               onClick={this.props.onEdit.bind(this, item.id)}
             >
               save
@@ -57,13 +57,13 @@ class EducationList extends Component {
           </div>
           <div>
             <span
-              className="material-icons-outlined"
+              className={['edit-button', 'material-icons-outlined'].join(' ')}
               onClick={this.handleEdit.bind(this, item.id)}
             >
               edit
             </span>
             <span
-              className="material-icons-outlined"
+              className={['delete-button', 'material-icons-outlined'].join(' ')}
               onClick={this.props.onDelete.bind(this, item.id)}
             >
               delete

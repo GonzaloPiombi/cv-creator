@@ -128,7 +128,10 @@ class Education extends Component {
         <section className="container">
           <div className="section-title">
             <h1>Education</h1>
-            <span className="material-icons-outlined" onClick={this.addStudies}>
+            <span
+              className={['add-button', 'material-icons-outlined'].join(' ')}
+              onClick={this.addStudies}
+            >
               add_circle_outline
             </span>
           </div>
@@ -171,7 +174,10 @@ class Education extends Component {
               onChange={this.handleSchoolChange}
               value={education.school}
             ></input>
-            <span className="material-icons-outlined" onClick={this.handleSave}>
+            <span
+              className={['save-button', 'material-icons-outlined'].join(' ')}
+              onClick={this.handleSave}
+            >
               save
             </span>
           </form>

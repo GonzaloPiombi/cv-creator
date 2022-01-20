@@ -153,7 +153,7 @@ class Experience extends Component {
           <div className="section-title">
             <h1>Experience</h1>
             <span
-              className="material-icons-outlined"
+              className={['add-button', 'material-icons-outlined'].join(' ')}
               onClick={this.addExperiences}
             >
               add_circle_outline
@@ -205,7 +205,10 @@ class Experience extends Component {
               onChange={this.handleDescriptionChange}
               defaultValue={experience.description}
             ></input>
-            <span className="material-icons-outlined" onClick={this.handleSave}>
+            <span
+              className={['save-button', 'material-icons-outlined'].join(' ')}
+              onClick={this.handleSave}
+            >
               save
             </span>
           </form>

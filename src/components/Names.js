@@ -50,7 +50,10 @@ class Names extends Component {
             onChange={this.handleLastNameChange}
             value={this.state.lastName}
           ></input>
-          <span className="material-icons-outlined" onClick={this.handleSave}>
+          <span
+            className={['save-button', 'material-icons-outlined'].join(' ')}
+            onClick={this.handleSave}
+          >
             save
           </span>
         </form>
@@ -63,7 +66,10 @@ class Names extends Component {
           <h1>{this.state.lastName}</h1>
         </div>
         <div>
-          <span className="material-icons-outlined" onClick={this.handleEdit}>
+          <span
+            className={['edit-button', 'material-icons-outlined'].join(' ')}
+            onClick={this.handleEdit}
+          >
             edit
           </span>
         </div>
