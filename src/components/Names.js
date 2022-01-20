@@ -39,7 +39,7 @@ class Names extends Component {
   render() {
     if (this.state.editState) {
       return (
-        <form className="column-section" onSubmit={this.handleSave}>
+        <form className="column-section">
           <input
             type="text"
             onChange={this.handleFirtsNameChange}
@@ -50,7 +50,9 @@ class Names extends Component {
             onChange={this.handleLastNameChange}
             value={this.state.lastName}
           ></input>
-          <button className="save-button">Save</button>
+          <span className="material-icons-outlined" onClick={this.handleSave}>
+            save
+          </span>
         </form>
       );
     }

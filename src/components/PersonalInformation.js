@@ -46,7 +46,7 @@ class PersonalInformation extends Component {
   render() {
     if (this.state.editState) {
       return (
-        <form className="column-section" onSubmit={this.handleSave}>
+        <form className="column-section">
           <input
             type="text"
             value={this.state.email}
@@ -62,7 +62,9 @@ class PersonalInformation extends Component {
             value={this.state.linkedIn}
             onChange={this.handleLinkedInChange}
           ></input>
-          <button className="save-button">Save</button>
+          <span className="material-icons-outlined" onClick={this.handleSave}>
+            save
+          </span>
         </form>
       );
     }
