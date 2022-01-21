@@ -1,16 +1,28 @@
 body {
+  background-color: #eeeefb;
+  color: #000000bf;
   margin: 0;
 }
 
 h1,
 h2,
 h3,
-h4 {
+h4,
+p {
   margin: 0;
 }
 
-.App {
+input {
+  background-color: #f8f8f8;
+  margin-bottom: 1%;
+}
+
+input:focus {
   background-color: #fff;
+}
+
+.App {
+  background-color: #fffaf0;
   border: solid 3px #000;
   display: flex;
   flex-direction: column;
@@ -24,19 +36,64 @@ h4 {
   margin-bottom: 4%;
 }
 
-button {
+.material-icons-outlined {
+  cursor: pointer;
   display: none;
 }
 
-.save-button {
-  display: block;
+form .material-icons-outlined {
+  display: inline-block;
 }
 
 .general-info {
-  border-bottom: solid 2px #000;
+  border-bottom: solid 2px #000000b8;
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
+  margin-bottom: 4%;
+}
+
+.general-info form:nth-child(1) input {
+  font-size: 1.4rem;
+}
+
+.general-info h1 {
+  font-size: 2rem;
+}
+
+.container {
+  margin-bottom: 4%;
+}
+
+.container h1 {
+  font-size: 1.8rem;
+  margin-bottom: 2%;
+}
+
+.container form {
+  border-bottom: 2px dashed #00000033;
+  padding: 4%;
+}
+
+.container form input {
+  font-size: 0.9rem;
+}
+
+.section-title:hover .material-icons-outlined {
+  display: inline-block;
+}
+
+.row-section {
+  display: flex;
+  align-items: flex-start;
+}
+
+.row-section .save-button {
+  display: inline-block;
+}
+
+.row-section:hover span {
+  display: inline-block;
 }
 
 .column-section {
@@ -44,35 +101,51 @@ button {
   flex-direction: column;
 }
 
-.column-section:hover button {
-  display: block;
-}
-
 .ed-exp {
+  border-bottom: 2px dashed #00000033;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  padding: 4%;
 }
 
-.container h1 {
-  margin-bottom: 2%;
+.ed-exp:hover .material-icons-outlined {
+  display: inline-block;
 }
 
-.ed-exp button {
-  width: fit-content;
+.ed-exp h2 {
+  color: #ef7d62;
+  font-size: 1.3rem;
 }
 
-.ed-exp:hover button {
-  display: block;
+.ed-exp .date {
+  font-size: 0.8rem;
+  margin-bottom: 3%;
+}
+
+.ed-exp h3 {
+  color: #0b9d0b;
 }
 
 .section-title {
-  border-bottom: solid 1px #000;
+  border-bottom: solid 1px #000000b8;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
 }
 
-.section-title:hover button {
-  display: block;
+.add-button {
+  color: #f78c4c;
+}
+
+.save-button {
+  color: #4646d5;
+}
+
+.edit-button {
+  color: #0b9d0b;
+}
+
+.delete-button {
+  color: #f11e1ed1;
 }
