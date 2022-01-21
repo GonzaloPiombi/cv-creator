@@ -2,6 +2,7 @@ body {
   background-color: #eeeefb;
   color: #000000bf;
   margin: 0;
+  -webkit-print-color-adjust: exact;
 }
 
 h1,
@@ -135,6 +136,7 @@ form .material-icons-outlined {
 }
 
 .add-button {
+  display: inline-block;
   color: #f78c4c;
 }
 
