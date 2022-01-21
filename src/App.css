@@ -29,7 +29,7 @@ input:focus {
   margin: 3% auto auto;
   min-height: 80vh;
   padding: 2%;
-  width: 55vw;
+  max-width: 550px;
 }
 
 .App > div {
@@ -148,4 +148,43 @@ form .material-icons-outlined {
 
 .delete-button {
   color: #f11e1ed1;
+}
+
+@media (max-width: 650px) {
+  .App {
+    max-width: 450px;
+  }
+
+  .general-info h1 {
+    font-size: 1.6rem;
+  }
+
+  h4,
+  .ed-exp p {
+    font-size: 0.9rem;
+  }
+
+  .container h1 {
+    font-size: 1.5rem;
+  }
+
+  .ed-exp h2 {
+    font-size: 1.2rem;
+  }
+
+  .ed-exp h3 {
+    font-size: 1.1rem;
+  }
+
+  .general-info form:nth-child(1) input {
+    font-size: 1rem;
+  }
+
+  .general-info form:nth-child(2) input {
+    font-size: 0.7rem;
+  }
+
+  .container form input {
+    font-size: 0.8rem;
+  }
 }
