@@ -148,7 +148,9 @@ class Education extends Component {
     }
     return (
       <section className="container">
-        <h1>Education</h1>
+        <div className="section-title">
+          <h1>Education</h1>
+        </div>
         <div className="column-section">
           <EducationList
             studies={studies}
