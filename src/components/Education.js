@@ -1,192 +1,174 @@
-import { Component } from 'react';
+import React, { useState } from 'react';
 import EducationList from './EducationList';
 import uniqid from 'uniqid';
 
-class Education extends Component {
-  constructor(props) {
-    super(props);
+const Education = () => {
+  const [isAddingStudy, setIsAddingStudy] = useState(false);
+  const [education, setEducation] = useState({
+    title: 'Title of Study',
+    date: 'Date of Study',
+    school: 'School Name',
+    id: uniqid(),
+  });
+  const [studies, setStudies] = useState([]);
+  const [areFieldsBeingEdited, setAreFieldsBeingEdited] = useState(false);
 
-    this.state = {
-      addStudy: false,
-      education: {
-        title: 'Title of Study',
-        date: 'Date of Study',
-        school: 'School Name',
-        id: uniqid(),
-      },
-      studies: [],
-      areFieldsBeingEdited: false,
-    };
-  }
-
-  addStudies = () => {
-    this.setState({
-      addStudy: true,
-    });
+  const addStudies = () => {
+    setIsAddingStudy(true);
   };
 
-  handleSave = (e) => {
-    e.preventDefault();
-    this.setState({
-      studies: this.state.studies.concat(this.state.education),
-      education: {
-        title: 'Title of Study',
-        date: 'Date of Study',
-        school: 'School Name',
-        id: uniqid(),
-      },
-      addStudy: false,
-      areFieldsBeingEdited: false,
+  const handleSave = (e) => {
+    setStudies(studies.concat(education));
+    setEducation({
+      title: 'Title of Study',
+      date: 'Date of Study',
+      school: 'School Name',
+      id: uniqid(),
     });
+    setIsAddingStudy(false);
+    setAreFieldsBeingEdited(false);
   };
 
-  handleEdit = (id, e) => {
-    e.preventDefault();
-    const newArr = [...this.state.studies];
+  const handleEdit = (id) => {
+    const newArr = [...studies];
     const index = newArr.findIndex((item) => item.id === id);
-    if (this.state.areFieldsBeingEdited) {
+    if (areFieldsBeingEdited) {
       newArr[index] = {
         ...newArr[index],
-        title: this.state.education.title,
-        date: this.state.education.date,
-        school: this.state.education.school,
-        id: this.state.education.id,
+        title: education.title,
+        date: education.date,
+        school: education.school,
+        id: education.id, //FIJATE ACA CON EXPERIENCE
       };
     } else {
       newArr[index] = { ...newArr[index], id: uniqid() };
     }
-    this.setState({
-      studies: newArr,
-      education: {
-        title: 'Title of Study',
-        date: 'Date of Study',
-        school: 'School Name',
-        id: uniqid(),
-      },
-      areFieldsBeingEdited: false,
+    setStudies(newArr);
+    setEducation({
+      title: 'Title of Study',
+      date: 'Date of Study',
+      school: 'School Name',
+      id: uniqid(),
     });
+    setAreFieldsBeingEdited(false);
   };
 
-  handleDelete = (id) => {
-    this.setState({
-      studies: this.state.studies.filter((item) => item.id !== id),
-    });
+  const handleDelete = (id) => {
+    const newStudies = studies.filter((item) => item.id !== id);
+    setStudies(newStudies);
   };
 
-  handleTitleChange = (e, item) => {
+  const handleTitleChange = (e, item) => {
     let newItem;
-    if (item && !this.state.areFieldsBeingEdited) {
+    if (item && !areFieldsBeingEdited) {
       newItem = { ...item, title: e.target.value, id: uniqid() };
     }
-    this.setState({
-      education: newItem || {
+    setEducation(
+      newItem || {
         title: e.target.value,
-        date: this.state.education.date,
-        school: this.state.education.school,
-        id: this.state.education.id,
-      },
-      areFieldsBeingEdited: true,
-    });
+        date: education.date,
+        school: education.school,
+        id: education.id,
+      }
+    );
+    setAreFieldsBeingEdited(true);
   };
 
-  handleDateChange = (e, item) => {
+  const handleDateChange = (e, item) => {
     let newItem;
-    if (item && !this.state.areFieldsBeingEdited) {
+    if (item && !areFieldsBeingEdited) {
       newItem = { ...item, date: e.target.value, id: uniqid() };
     }
-    this.setState({
-      education: newItem || {
-        title: this.state.education.title,
+    setEducation(
+      newItem || {
+        title: education.title,
         date: e.target.value,
-        school: this.state.education.school,
-        id: this.state.education.id,
-      },
-      areFieldsBeingEdited: true,
-    });
+        school: education.school,
+        id: education.id,
+      }
+    );
+    setAreFieldsBeingEdited(true);
   };
 
-  handleSchoolChange = (e, item) => {
+  const handleSchoolChange = (e, item) => {
     let newItem;
-    if (item && !this.state.areFieldsBeingEdited) {
+    if (item && !areFieldsBeingEdited) {
       newItem = { ...item, school: e.target.value, id: uniqid() };
     }
-    this.setState({
-      education: newItem || {
-        title: this.state.education.title,
-        date: this.state.education.date,
+    setEducation(
+      newItem || {
+        title: education.title,
+        date: education.date,
         school: e.target.value,
-        id: this.state.education.id,
-      },
-      areFieldsBeingEdited: true,
-    });
+        id: education.id,
+      }
+    );
+    setAreFieldsBeingEdited(true);
   };
 
-  render() {
-    const { education, studies } = this.state;
-    if (!this.state.addStudy) {
-      return (
-        <section className="container">
-          <div className="section-title">
-            <h1>Education</h1>
-            <span
-              className={['add-button', 'material-icons-outlined'].join(' ')}
-              onClick={this.addStudies}
-            >
-              add_circle_outline
-            </span>
-          </div>
-          <EducationList
-            studies={studies}
-            onTitleChange={this.handleTitleChange}
-            onDateChange={this.handleDateChange}
-            onSchoolChange={this.handleSchoolChange}
-            onEdit={this.handleEdit}
-            onDelete={this.handleDelete}
-          />
-        </section>
-      );
-    }
+  if (!isAddingStudy) {
     return (
       <section className="container">
         <div className="section-title">
           <h1>Education</h1>
+          <span
+            className={['add-button', 'material-icons-outlined'].join(' ')}
+            onClick={addStudies}
+          >
+            add_circle_outline
+          </span>
         </div>
-        <div className="column-section">
-          <EducationList
-            studies={studies}
-            onTitleChange={this.handleTitleChange}
-            onDateChange={this.handleDateChange}
-            onSchoolChange={this.handleSchoolChange}
-            onEdit={this.handleEdit}
-            onDelete={this.handleDelete}
-          />
-          <form className="column-section">
-            <input
-              type="text"
-              onChange={this.handleTitleChange}
-              value={education.title}
-            ></input>
-            <input
-              type="text"
-              onChange={this.handleDateChange}
-              value={education.date}
-            ></input>
-            <input
-              type="text"
-              onChange={this.handleSchoolChange}
-              value={education.school}
-            ></input>
-            <span
-              className={['save-button', 'material-icons-outlined'].join(' ')}
-              onClick={this.handleSave}
-            >
-              save
-            </span>
-          </form>
-        </div>
+        <EducationList
+          studies={studies}
+          onTitleChange={handleTitleChange}
+          onDateChange={handleDateChange}
+          onSchoolChange={handleSchoolChange}
+          onEdit={handleEdit}
+          onDelete={handleDelete}
+        />
       </section>
     );
   }
-}
+  return (
+    <section className="container">
+      <div className="section-title">
+        <h1>Education</h1>
+      </div>
+      <div className="column-section">
+        <EducationList
+          studies={studies}
+          onTitleChange={handleTitleChange}
+          onDateChange={handleDateChange}
+          onSchoolChange={handleSchoolChange}
+          onEdit={handleEdit}
+          onDelete={handleDelete}
+        />
+        <form className="column-section">
+          <input
+            type="text"
+            onChange={handleTitleChange}
+            value={education.title}
+          ></input>
+          <input
+            type="text"
+            onChange={handleDateChange}
+            value={education.date}
+          ></input>
+          <input
+            type="text"
+            onChange={handleSchoolChange}
+            value={education.school}
+          ></input>
+          <span
+            className={['save-button', 'material-icons-outlined'].join(' ')}
+            onClick={handleSave}
+          >
+            save
+          </span>
+        </form>
+      </div>
+    </section>
+  );
+};
 
 export default Education;
