@@ -31,7 +31,7 @@ const Experience = () => {
     setAreFieldsBeingEdited(false);
   };
 
-  const handleEdit = (id, e) => {
+  const handleEdit = (id) => {
     const newArr = [...experiences];
     const index = newArr.findIndex((item) => item.id === id);
     if (areFieldsBeingEdited) {
