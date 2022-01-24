@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
 const PersonalInformation = () => {
-  const [email, setEmail] = useState;
-  const [phone, setPhone] = useState;
-  const [linkedIn, setLinkedIn] = useState;
+  const [email, setEmail] = useState('Email');
+  const [phone, setPhone] = useState('Phone Number');
+  const [linkedIn, setLinkedIn] = useState('LinkedIn');
   const [editState, setEditState] = useState(false);
 
   const handleEditSave = () => {
