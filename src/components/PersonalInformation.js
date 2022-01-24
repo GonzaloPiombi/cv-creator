@@ -1,96 +1,66 @@
 import { Component } from 'react';
+import React, { useState } from 'react';
 
-class PersonalInformation extends Component {
-  constructor(props) {
-    super(props);
+const PersonalInformation = () => {
+  const [email, setEmail] = useState;
+  const [phone, setPhone] = useState;
+  const [linkedIn, setLinkedIn] = useState;
+  const [editState, setEditState] = useState(false);
 
-    this.state = {
-      editState: false,
-      email: 'E-mail',
-      phone: 'Phone number',
-      linkedIn: 'LinkedIn',
-    };
-  }
-
-  handleEdit = () => {
-    this.setState((prevState) => ({
-      editState: !prevState.editState,
-    }));
+  const handleEditSave = () => {
+    setEditState(!editState);
   };
 
-  handleSave = (e) => {
-    e.preventDefault();
-    this.setState((prevState) => ({
-      editState: !prevState.editState,
-    }));
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
   };
 
-  handleEmailChange = (e) => {
-    this.setState({
-      email: e.target.value,
-    });
+  const handlePhoneChange = (e) => {
+    setPhone(e.target.value);
   };
 
-  handlePhoneChange = (e) => {
-    this.setState({
-      phone: e.target.value,
-    });
+  const handleLinkedInChange = (e) => {
+    setLinkedIn(e.target.value);
   };
 
-  handleLinkedInChange = (e) => {
-    this.setState({
-      linkedIn: e.target.value,
-    });
-  };
-
-  render() {
-    if (this.state.editState) {
-      return (
-        <div className="row-section">
-          <span
-            className={['save-button', 'material-icons-outlined'].join(' ')}
-            onClick={this.handleSave}
-          >
-            save
-          </span>
-          <form className="column-section">
-            <input
-              type="text"
-              value={this.state.email}
-              onChange={this.handleEmailChange}
-            ></input>
-            <input
-              type="text"
-              value={this.state.phone}
-              onChange={this.handlePhoneChange}
-            ></input>
-            <input
-              type="text"
-              value={this.state.linkedIn}
-              onChange={this.handleLinkedInChange}
-            ></input>
-          </form>
-        </div>
-      );
-    }
+  if (editState) {
     return (
-      <section className="row-section">
-        <div>
-          <span
-            className={['edit-button', 'material-icons-outlined'].join(' ')}
-            onClick={this.handleEdit}
-          >
-            edit
-          </span>
-        </div>
-        <div>
-          <h4>{this.state.email}</h4>
-          <h4>{this.state.phone}</h4>
-          <h4>{this.state.linkedIn}</h4>
-        </div>
-      </section>
+      <div className="row-section">
+        <span
+          className={['save-button', 'material-icons-outlined'].join(' ')}
+          onClick={handleEditSave}
+        >
+          save
+        </span>
+        <form className="column-section">
+          <input type="text" value={email} onChange={handleEmailChange}></input>
+          <input type="text" value={phone} onChange={handlePhoneChange}></input>
+          <input
+            type="text"
+            value={linkedIn}
+            onChange={handleLinkedInChange}
+          ></input>
+        </form>
+      </div>
     );
   }
-}
+  return (
+    <section className="row-section">
+      <div>
+        <span
+          className={['edit-button', 'material-icons-outlined'].join(' ')}
+          onClick={handleEditSave}
+        >
+          edit
+        </span>
+      </div>
+      <div>
+        <h4>{email}</h4>
+        <h4>{phone}</h4>
+        <h4>{linkedIn}</h4>
+      </div>
+    </section>
+  );
+};
 
 export default PersonalInformation;
