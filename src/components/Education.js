@@ -38,7 +38,7 @@ const Education = () => {
         title: education.title,
         date: education.date,
         school: education.school,
-        id: education.id, //FIJATE ACA CON EXPERIENCE
+        id: education.id,
       };
     } else {
       newArr[index] = { ...newArr[index], id: uniqid() };
