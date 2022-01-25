@@ -7,3 +7,5 @@ Goals of the project:
 - Introduction to React.
 - Using class components.
 - Learning about props and state.
+
+[Live demo](https://gonzalopiombi.github.io/cv-creator/)
